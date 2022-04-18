@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">PersonalArea</string>
+
+    <string-array name="tariff_names">
+        <item>«Улыбка (бесплатные СМС)»</item>
+        <item>«Свобода (безлимитный интернет)»</item>
+    </string-array>
+
+    <string-array name="tariff_speeds">
+        <item>100</item>
+        <item>200</item>
+    </string-array>
+
+    <string-array name="tariff_costs">
+        <item>0</item>
+        <item>0</item>
+    </string-array>
+
+    <string-array name="user_info">
+        <item>Иванов Иван Иванович</item>
+        <item>Сахалин, ул. Пушкина, д. Колотушкина</item>
+        <item>Доступные услуги</item>
+    </string-array>
+
+</resources>

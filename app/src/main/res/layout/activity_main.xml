@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F7"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/personalAccountTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Личный кабинет"
+        android:textColor="#000000"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/balanceCard"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/balanceCard"
+        android:name="com.example.personalarea.PersonalAccountFragment"
+        android:layout_width="300dp"
+        android:layout_height="97dp"
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center_horizontal"
+        tools:layout="@layout/personal_account_fragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/personalAccountTitle"/>
+
+    <TextView
+        android:id="@+id/tariff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Тариф"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/balanceCard"
+        app:layout_constraintTop_toBottomOf="@id/balanceCard" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tariffList"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="#FFFFFF"
+        tools:listitem="@layout/tariff_item"
+        app:layout_constraintLeft_toLeftOf="@id/balanceCard"
+        app:layout_constraintTop_toBottomOf="@id/tariff"/>
+
+    <TextView
+        android:id="@+id/userInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Пользователь"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/balanceCard"
+        app:layout_constraintTop_toBottomOf="@id/tariffList" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/userInfoList"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="#F1F1F1"
+        tools:listitem="@layout/user_info_item"
+        app:layout_constraintLeft_toLeftOf="@id/balanceCard"
+        app:layout_constraintTop_toBottomOf="@id/userInfo"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

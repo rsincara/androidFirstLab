@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="25dp"
+        android:background="#D3D3D3" />
+
+    <TextView
+        android:id="@+id/tariffTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Тариф  "
+        android:textColor="#000000"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewTariff"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@id/tariffTitle"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#000000"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tariffCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/tariffCostRubleSign"/>
+
+    <TextView
+        android:id="@+id/tariffCostRubleSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/tariffCostRubleSignIn"
+        android:text=" ₽ "
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tariffCostRubleSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="20dp"
+        android:text="/мес"
+        android:textColor="#000000"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/tariffSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTariff"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="15dp"
+        android:text="Скорость до "
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#696969"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewTariffSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#696969"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:layout_below="@id/textViewTariff"
+        android:layout_toRightOf="@id/tariffSpeed"/>
+
+    <TextView
+        android:id="@+id/tariffSpeedUnits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=" Мбит/c"
+        android:textColor="#696969"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:layout_below="@id/textViewTariff"
+        android:layout_toRightOf="@id/textViewTariffSpeed"/>
+
+</RelativeLayout>
