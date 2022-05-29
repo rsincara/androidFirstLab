@@ -1,46 +1,42 @@
 package com.example.personalarea.ui.main.view
 
 import android.os.Bundle
-import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.personalarea.R
 import com.example.personalarea.data.api.ApiHelper
 import com.example.personalarea.data.api.RetrofitBuilder
 import com.example.personalarea.ui.base.ViewModelFactory
-import com.example.personalarea.ui.main.viewmodel.MainViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.personalarea.data.model.Tariff
 import com.example.personalarea.ui.main.adapter.TariffRecyclerAdapter
-import com.example.personalarea.utils.Status
+import com.example.personalarea.ui.main.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MainViewModel
+    private val factory = ViewModelFactory(ApiHelper(RetrofitBuilder.apiService))
+
     private lateinit var tariffAdapter: TariffRecyclerAdapter
+
+    private val viewModel by viewModels<MainViewModel>{ factory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setupViewModel()
         setupUI()
         setupObservers()
     }
 
-
-    private fun setupViewModel() {
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(ApiHelper(RetrofitBuilder.apiService))
-        ).get(MainViewModel::class.java)
+    override fun onResume() {
+        super.onResume()
+        viewModel.getTariffs()
     }
+
 
     private fun setupUI() {
         val tariffRecyclerView: RecyclerView = findViewById(R.id.tariffList)
-
+        tariffAdapter = TariffRecyclerAdapter()
         tariffRecyclerView.layoutManager = LinearLayoutManager(this)
         tariffRecyclerView.addItemDecoration(
             DividerItemDecoration(
@@ -49,30 +45,13 @@ class MainActivity : AppCompatActivity() {
             )
         )
         tariffRecyclerView.adapter = tariffAdapter
+
     }
 
     private fun setupObservers() {
-        val tariffRecyclerView: RecyclerView = findViewById(R.id.tariffList)
-
-        viewModel.getTariffs().observe(this, Observer {
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                        tariffRecyclerView.visibility = View.VISIBLE
-                        resource.data?.let { users -> retrieveList(users) }
-                    }
-                    Status.ERROR -> {
-                        tariffRecyclerView.visibility = View.VISIBLE
-                    }
-                }
-            }
-        })
-    }
-
-    private fun retrieveList(users: List<Tariff>) {
-        tariffAdapter.apply {
-            addUsers(users)
-            notifyDataSetChanged()
+        viewModel.tariffs.observe(this) {
+            tariffAdapter.submitList(it)
         }
     }
+
 }
