@@ -22,7 +22,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/balanceCard"
-        android:name="com.example.personalarea.PersonalAccountFragment"
+        android:name="com.example.personalarea.ui.main.view.PersonalAccountFragment"
         android:layout_width="300dp"
         android:layout_height="97dp"
         android:layout_marginTop="24dp"

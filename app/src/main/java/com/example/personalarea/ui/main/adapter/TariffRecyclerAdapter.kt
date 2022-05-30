@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.personalarea.R
 import com.example.personalarea.data.model.Tariff
 
-class TariffRecyclerAdapter : ListAdapter<Tariff, TariffRecyclerAdapter.MyViewHolder>(ItemCallBack()) {
+class TariffRecyclerAdapter : ListAdapter<Tariff, TariffRecyclerAdapter.MyViewHolder>(TariffCallBack()) {
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewTariff: TextView = itemView.findViewById(R.id.textViewTariff)
@@ -37,7 +37,7 @@ class TariffRecyclerAdapter : ListAdapter<Tariff, TariffRecyclerAdapter.MyViewHo
     }
 
 }
-class ItemCallBack : DiffUtil.ItemCallback<Tariff>(){
+class TariffCallBack : DiffUtil.ItemCallback<Tariff>(){
     override fun areItemsTheSame(oldItem: Tariff, newItem: Tariff): Boolean {
         return oldItem == newItem
     }
